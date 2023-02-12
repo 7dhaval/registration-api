@@ -11,14 +11,14 @@ const registerSchema = new mongoose.Schema({
             required:true,
             unique:true
         },
-        // passsword: {
-        //     type:String,
-        //     required:true
-        // },
-        // confirmpassword: {
-        //     type:String,
-        //     required:true
-        // },
+        password: {
+            type:String,
+            required:true
+        },
+        confirmpassword: {
+            type:String,
+            required:true
+        },
         phone:{
             type:Number,
             required:true

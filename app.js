@@ -14,26 +14,27 @@ app.get('/', async (req, res) => {
     res.send("Hello From Website");
   });
 
-app.post('/register', async(req, res) => {
+
+app.post("/register", async(req, res) => {
     try{
-        // const passsword =  req.body.passsword;
-        // const cpasssword =  req.body.confirmpassword;
+        const password =  req.body.password;
+        const cpassword =  req.body.confirmpassword;
       
-        // if(passsword === cpasssword){
+        if(password === cpassword){
+
             const registerEmployess = new register({
                 firstname: req.body.firstname,
                 email: req.body.email,
-                // passsword: req.body.passsword,
-                // confirmpassword: req.body.confirmpassword,
+                password:password,
+                confirmpassword:cpassword,
                 phone: req.body.phone,
                 gender: req.body.gender
             })
           const registered = await registerEmployess.save();
-          res.status(201).send(registered); 
-          console.log(registered);
-        // }else{
-            // res.send("passwords are not matching");
-        // }
+          res.status(201).render("index");
+        }else{
+            res.send("passwords are not matching");
+        }
 
     }catch(err){
         res.status(400).send(err);
